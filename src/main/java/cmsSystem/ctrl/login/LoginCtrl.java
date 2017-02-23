@@ -20,9 +20,9 @@ public class LoginCtrl extends BaseController{
 	@Resource(name="LoginServiceImpl")
 	private LoginService loginService;
 	
-	@RequestMapping("/select")
+	@RequestMapping("/select")  
 	public ModelAndView select (){
-		logger.info("LoginCtrl select...");
+		logger.info("LoginCtrl select");
 		ModelAndView mv = new ModelAndView();
 		try {
 			List<PageData> list = this.loginService.select();
