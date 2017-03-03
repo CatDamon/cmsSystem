@@ -76,7 +76,17 @@
 		<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />
 	</aop:config>
 	
+	<!-- Beetl -->
+
+    <bean id="beetlConfig" class="cmsSystem.common.MyBeetlGroupUtilConfiguration"
+          init-method="init"/>
+
+    <bean id="viewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+    </bean> 
 	
+	<!-- 访问静态页面时候用web默认的servlet去访问 -->
+	<!-- <mvc:default-servlet-handler/> -->
 
  
 </beans>

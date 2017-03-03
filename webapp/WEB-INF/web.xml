@@ -28,7 +28,7 @@
 	<!-- 设置登录URL匹配规则 -->
 	<servlet-mapping>
 		<servlet-name>mvc</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<filter>
 		<filter-name>encodingFilter</filter-name>

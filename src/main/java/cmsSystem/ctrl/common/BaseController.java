@@ -18,7 +18,7 @@ import cmsSystem.utils.PageData;
 import cmsSystem.utils.UuidUtil;
 
 
-public class BaseController {
+public class BaseController{
 	public static final Logger logger = LoggerFactory.getLogger(BaseController.class);
 
 	private static final long serialVersionUID = 6357869213649815390L;
