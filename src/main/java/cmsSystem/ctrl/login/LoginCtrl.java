@@ -12,11 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cmsSystem.ctrl.common.BaseController;
 import cmsSystem.service.login.LoginService;
-import cmsSystem.service.login.impl.LoginServiceImpl;
 import cmsSystem.utils.PageData;
 
 @Controller
-@RequestMapping("/login")
 public class LoginCtrl extends BaseController{
 	
 	@Resource(name="LoginServiceImpl")
@@ -30,10 +28,18 @@ public class LoginCtrl extends BaseController{
 		try {
 			List<PageData> list = this.loginService.select();
 			System.out.println(list);
-			
 		} catch (Exception e) {	
 			e.printStackTrace();
 		}
+		return mv;
+	}
+	//登录
+	@RequestMapping(value="/login")
+	public ModelAndView login (){
+		logger.info("LoginCtrl login...");
+		ModelAndView mv = new ModelAndView("/login.html");
+		
+		System.out.println(this.getRequest().getPathInfo());
 		return mv;
 	}
 }

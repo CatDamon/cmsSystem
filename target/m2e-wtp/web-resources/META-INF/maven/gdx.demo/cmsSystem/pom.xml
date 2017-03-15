@@ -8,6 +8,7 @@
   <name>cmsSystem Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- spring版本号 -->
     <spring.version>4.0.2.RELEASE</spring.version>
     <!-- mybatis版本号 -->
@@ -128,7 +129,6 @@
       <version>1.1.41</version>
     </dependency>
  
- 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -187,16 +187,57 @@
                 </exclusion>
             </exclusions>
         </dependency>
-	
+        
 		<!-- bettl -->
 		<dependency>
 	        <groupId>com.ibeetl</groupId>
 	        <artifactId>beetl</artifactId>
 	        <version>2.7.11</version>
 		</dependency>
-   
+		<!-- jetty -->
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-webapp</artifactId>
+		    <version>9.4.2.v20170220</version>
+		</dependency>
   </dependencies>
-  <build>
-    <finalName>cmsSystem</finalName>
-  </build>
+   
+  	<!-- jetty插件 -->
+  		<build>
+			  <plugins>
+			    <plugin>
+			      <groupId>org.eclipse.jetty</groupId>
+			      <artifactId>jetty-maven-plugin</artifactId>
+			      <version>9.2.8.v20150217</version>
+			      <configuration>
+			        <httpConnector>
+			          <port>8080</port>
+			        </httpConnector>
+			        <stopKey>shutdown</stopKey>
+			        <!--
+			        <scanIntervalSeconds>2</scanIntervalSeconds>
+			        -->
+			        <reload>manual</reload>
+			        <dumpOnStart>true</dumpOnStart>
+			        <!-- 用来代替jetty默认的加载静态资源路径 -->
+			        <webAppSourceDirectory>${project.basedir}/src/main/resources/webapp</webAppSourceDirectory>
+			        <webApp>
+			          <contextPath>/</contextPath>
+			        </webApp>
+			        <requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
+			          <filename>target/access-yyyy_mm_dd.log</filename>
+			          <filenameDateFormat>yyyy_MM_dd</filenameDateFormat>
+			          <logDateFormat>yyyy-MM-dd HH:mm:ss</logDateFormat>
+			          <logTimeZone>GMT+8:00</logTimeZone>
+			          <append>true</append>
+			          <logServer>true</logServer>
+			          <retainDays>120</retainDays>
+			          <logCookies>true</logCookies>
+			        </requestLog>
+			      </configuration>
+			    </plugin>
+			  </plugins>
+			</build>
+
 </project>
