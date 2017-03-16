@@ -108,6 +108,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 			/login 								= anon
+			/toLogin							= anon
 			/static/css/**								= anon
 			/static/iconfont/**							= anon
 			/static/image/**							= anon
