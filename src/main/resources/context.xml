@@ -109,13 +109,13 @@
 			<value>
 			/login 								= anon
 			/toLogin							= anon
-			/static/css/**								= anon
-			/static/iconfont/**							= anon
-			/static/image/**							= anon
-			/static/js/**								= anon
-			/static/layui/**							= anon
-			/static/lib/**								= anon
-			/static/skin/**							= anon
+			/css/**								= anon
+			/iconfont/**							= anon
+			/image/**							= anon
+			/js/**								= anon
+			/layui/**							= anon
+			/lib/**								= anon
+			/skin/**							= anon
            	/**  								= authc
 			</value>
 		</property>

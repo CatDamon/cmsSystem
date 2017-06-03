@@ -26,7 +26,8 @@
     </property>
   </bean>
   <!-- springMVC访问静态文件配置 -->
-  <mvc:resources mapping="/static/**" location="/static/" />  
+  <!--<mvc:resources mapping="/static/**" location="/static/" />  -->
+    <mvc:default-servlet-handler/>
   <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
   <bean
    class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">

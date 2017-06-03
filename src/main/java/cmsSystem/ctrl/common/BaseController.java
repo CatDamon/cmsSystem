@@ -1,21 +1,21 @@
 package cmsSystem.ctrl.common;
 
 
-import javax.mail.Session;
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 
+import cmsSystem.service.systemManage.UserManageService;
+import cmsSystem.utils.Const;
+import cmsSystem.utils.Page;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
 import cmsSystem.utils.PageData;
 import cmsSystem.utils.UuidUtil;
+
 
 
 public class BaseController{
@@ -58,10 +58,10 @@ public class BaseController{
 	/**
 	 * 得到分页列表的信息 
 	 */
-	/*public Page getPage(){
+	public Page getPage(){
 		
 		return new Page();
-	}*/
+	}
 	
 	public static void logBefore(Logger logger, String interfaceName){
 		logger.info("");
@@ -91,13 +91,13 @@ public class BaseController{
 	 * 获取会话中的用户对象
 	 * @return
 	 */
-	/*protected UserManage getUser(){
-		return (UserManage)getRequest().getSession().getAttribute(Const.SESSION_USER);
+	protected UserManageService getUser(){
+		return (UserManageService)getRequest().getSession().getAttribute(Const.SESSION_USER);
 	}
 	
-	protected Session getSession(){
-		Subject subject = SecurityUtils.getSubject();
-		Session session =  subject.getSession();
+	protected org.apache.shiro.session.Session getSession(){
+		org.apache.shiro.subject.Subject subject = SecurityUtils.getSubject();
+		org.apache.shiro.session.Session session =  subject.getSession();
 		return session;
-	}*/
+	}
 }

@@ -130,8 +130,7 @@ public class PageData extends HashMap implements Map{
 	/** 
      * 将一个 Map 对象转化为一个 JavaBean 
      * @param type 要转化的类型 
-     * @param map 包含属性值的 map 
-     * @return 转化出来的 JavaBean 对象 
+     * @return 转化出来的 JavaBean 对象
      * @throws IntrospectionException 
      *             如果分析类属性失败 
      * @throws IllegalAccessException 

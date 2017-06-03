@@ -1,11 +1,9 @@
 package cmsSystem.ctrl.login;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -17,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import cmsSystem.ctrl.common.BaseController;
 import cmsSystem.service.login.LoginService;
+import cmsSystem.utils.Const;
 import cmsSystem.utils.PageData;
 import cmsSystem.utils.ShiroEncriptAndDecriptUtils;
 
@@ -28,6 +28,16 @@ public class LoginCtrl extends BaseController{
 	@Resource(name="LoginServiceImpl")
 	private LoginService loginService;
 	
+	
+	@RequestMapping("/loginOut")
+	public String loginOut() {
+		//shiro销毁登录
+		Subject subject = SecurityUtils.getSubject();
+		subject.logout();
+		getRequest().getSession().removeAttribute(Const.SESSION_USER);
+		getRequest().getSession().removeAttribute(Const.SESSION_USERNAME);
+		return "/login.html";
+	}
 	
 	//跳转到登录页面
 	@RequestMapping(value="/login")
